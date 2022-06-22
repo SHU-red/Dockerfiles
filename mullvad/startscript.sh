@@ -12,14 +12,5 @@ if [ -n "${LOCAL_NETWORK}" ]; then
     echo ""
 fi
 
-# Create symlink to avoid libgmodule-2.0.so.0 not found message
-ln -s /usr/lib/x86_64-linux-gnu/libgm2.so.0 /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0
-
-exec /usr/bin/xterm &
-exec '/opt/Mullvad VPN/mullvad-gui' &
-# exec '/opt/Mullvad VPN/mullvad-gui' %U
-# exec '/opt/Mullvad VPN/mullvad-vpn'
-
-# Work to infinity
-echo "Here the infinity begins ..."
-tail -f /dev/null
+### Start mullvad daemon
+exec /opt/Mullvad\ VPN/resources/mullvad-daemon -v
