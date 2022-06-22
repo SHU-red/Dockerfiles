@@ -5,10 +5,13 @@
 # inspired by
 # https://github.com/oblique/dockerfiles/blob/master/mullvad/Dockerfile
 
+# Base image
 FROM debian
 
+# Install packages, mullvad and clean up
 RUN apt-get -y update && \
-    apt-get -y install curl dbus && \
+    apt-get -y install curl dbus iproute2 && \
+    dpkg --add-architecture amd64 && \
     curl -L -o mullvad.deb https://mullvad.net/download/app/deb/latest && \
     apt-get -y install ./mullvad.deb && \
     rm -f mullvad.deb && \
