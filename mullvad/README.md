@@ -1,6 +1,8 @@
 # mullvad VPN
-## Docker HUB
+## DockerHub
 - https://hub.docker.com/r/shur3d/mullvad
+## Build
+See general description at https://github.com/SHU-red/Docker
 ## Disclaimer
 - Running mullvad VPN on Debian
 - Configure mullvad via CLI

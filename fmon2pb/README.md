@@ -1,8 +1,12 @@
  # fmon2pb - Folder-Monitoring to Pushbullet
 
-## Docker HUB
+## DockerHub
 
 - https://hub.docker.com/r/shur3d/fmon2pb
+
+## Build
+
+See general description at https://github.com/SHU-red/Docker
 
 ## Disclaimer
 

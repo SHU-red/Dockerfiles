@@ -1,8 +1,12 @@
  # fmon2telegram - Folder-Monitoring to Telegram Bot
 
-## Docker HUB
+## DockerHub
 
 - https://hub.docker.com/r/shur3d/fmon2telegram
+
+## Build
+
+See general description at https://github.com/SHU-red/Docker
 
 ## Disclaimer
 

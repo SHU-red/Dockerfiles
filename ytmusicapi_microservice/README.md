@@ -7,9 +7,13 @@ special thanks to
 [Florian Quirin](https://github.com/fquirin)
 for his awesome work!!!
 
-# Docker HUB
+# DockerHub
 
 - https://hub.docker.com/r/shur3d/ytmusicapi_microservice
+
+# Build
+
+See general description at https://github.com/SHU-red/Docker
 
 # Documentation
 Please see the source repo
