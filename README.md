@@ -22,7 +22,7 @@ Always the newest one and a good pick if you want to use always the up-to-date c
 
 `*.*`
 
-Versionizes containers i have to manually increment and set. Use these if you want your container never to be updated or change.
+Versionized containers (e.g. `0.1`) incremented manually. Use these if you want your container never to be updated or change and hope i do not accidently overwrite it.
 
 ## Build
 1. Make sure `buildx` is working on your machine
