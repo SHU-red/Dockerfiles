@@ -1,3 +1,7 @@
+# Leave directories empty
 /fmon2telegram/files/*
 /fmon2pb/files/*
 
+# Always upload .gitignore
+# (e.g. to be able to push empty folders via placing .gitignore files into it)
+!*.gitignore
