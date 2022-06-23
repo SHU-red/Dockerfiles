@@ -4,8 +4,7 @@
 # Title
 echo -e "=============== Create new Dockerfile ======================\n"
 
-# Credentials
-usr=shur3d # Docker Hub Username
+# Docker Credentials taken from parent script (executing this script)
 
 # Settings
 export DOCKER_CLI_EXPERIMENTAL=enabled
@@ -31,12 +30,12 @@ nam=${PWD##*/}
 
 # Get additional Tags
 echo -e "What additional tags shall be applied?\n(Comma-separated list)\n"
-read -e -p "Tags:" -i "experimental" atags
+read -e -p "Tags:" -i $DOCKER_TAGS atags
 name=${atags:-experimental}
 
 # Get target platforms
 echo -e "\nWhat target platforms?\n(Comma-separated list)\n"
-read -e -p "Platforms:" -i "linux/386,linux/amd64" aplat
+read -e -p "Platforms:" -i $DOCKER_PLATFORMS aplat
 
 echo -e "\n\nDetected tags: $atags\n"
 echo -e "Detected platforms: $aplat\n"
@@ -52,7 +51,7 @@ for i in ${atags//,/ }
 do
 
     # Tag generated
-    tag=$usr/$nam:$i
+    tag=$DOCKER_USR/$nam:$i
 
     echo -e "$tag"
 
@@ -66,7 +65,7 @@ for i in ${atags//,/ }
 do
 
     # Tag generated
-    tag=$usr/$nam:$i
+    tag=$DOCKER_USR/$nam:$i
 
     # Inform about Build
     echo -e "Starting BUILDX: =============================\n\n"

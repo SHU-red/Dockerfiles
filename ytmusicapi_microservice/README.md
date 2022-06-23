@@ -7,6 +7,10 @@ special thanks to
 [Florian Quirin](https://github.com/fquirin)
 for his awesome work!!!
 
+# Docker HUB
+
+- https://hub.docker.com/r/shur3d/ytmusicapi_microservice
+
 # Documentation
 Please see the source repo
 https://github.com/fquirin/python-ytmusicapi-server
