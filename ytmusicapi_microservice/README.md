@@ -1,4 +1,15 @@
 # Dockerized Microservice for YtMusicApi
+
+## DockerHub
+
+- https://hub.docker.com/r/shur3d/ytmusicapi_microservice
+
+## Build
+
+See general description at https://github.com/SHU-red/Docker
+
+## Disclaimer
+
 Running
 - From git: Microservice from https://github.com/fquirin/python-ytmusicapi-server
 - From pip: YtMusicApi from https://github.com/fquirin/python-ytmusicapi-server
@@ -7,24 +18,16 @@ special thanks to
 [Florian Quirin](https://github.com/fquirin)
 for his awesome work!!!
 
-# DockerHub
-
-- https://hub.docker.com/r/shur3d/ytmusicapi_microservice
-
-# Build
-
-See general description at https://github.com/SHU-red/Docker
-
-# Documentation
+## Documentation
 Please see the source repo
 https://github.com/fquirin/python-ytmusicapi-server
 
-# ToDo's
+## ToDo's
 [x] Create dedicated folder for persistent settings/files
 
 [ ] Add arm-builds?
 
-# Docker-Compose
+## Docker-Compose
 Example:
 ```
 services:
@@ -40,7 +43,7 @@ services:
     restart: unless-stopped
 ```
 
-# Installation
+## Installation
 (Only necessary if you need to use authenticated search)
 1. Run docker container
 2. Enter python in persistent folder "persist"
