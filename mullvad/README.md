@@ -71,7 +71,7 @@ No port forwarding in own service anymore
       - /mnt/downloads:/output:rw
     restart: unless-stopped
 ```
-## Configure mullvad
+## Installation / Configuration
 from inside mullvad container
 ```
 $ mullvad relay set tunnel-protocol wireguard

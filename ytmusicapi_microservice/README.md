@@ -43,7 +43,7 @@ services:
     restart: unless-stopped
 ```
 
-## Installation
+## Installation / Configuration
 (Only necessary if you need to use authenticated search)
 1. Run docker container
 2. Enter python in persistent folder "persist"
