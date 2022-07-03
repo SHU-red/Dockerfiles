@@ -1,4 +1,4 @@
-# Docker
+# :whale: Docker
 
 ## DockerHub
 https://hub.docker.com/u/shur3d
