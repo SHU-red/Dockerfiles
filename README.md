@@ -1,4 +1,4 @@
-# Docker
+# :whale: Docker
 
 ## DockerHub
 https://hub.docker.com/u/shur3d
@@ -22,7 +22,7 @@ Always the newest one and a good pick if you want to use always the up-to-date c
 
 `*.*`
 
-Versionized containers (e.g. `0.1`) incremented manually. Use these if you want your container never to be updated or change and hope i do not accidently overwrite it.
+Versionized containers (e.g. `0.1`) incremented manually. If possible and if it makes sense, i may use the version declaration of the creator of the containered service. Use these if you want your container never to be updated or change and hope i do not accidently overwrite it.
 
 ## Build
 1. Make sure `buildx` is working on your machine
