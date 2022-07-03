@@ -6,7 +6,7 @@
 # https://github.com/oblique/dockerfiles/blob/master/mullvad/Dockerfile
 
 # Base image
-FROM debian
+FROM debian:latest
 
 # Install packages, mullvad and clean up
 RUN apt-get -y update && \
