@@ -25,7 +25,7 @@ Example how i use it to control fan speed based on CPU and HDD temperature
 version: "3"
 services:
   hddfancontrol:
-    image: shur3d/hddfancontrol:experimental
+    image: shur3d/hddfancontrol:latest
     container_name: hddfancontrol
     restart: unless-stopped
     volumes:
