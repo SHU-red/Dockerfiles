@@ -1,4 +1,4 @@
-# hddfancontrol
+# :snowflake: hddfancontrol
 
 ## DockerHub
 
