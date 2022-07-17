@@ -1,16 +1,26 @@
 # mullvad VPN
+
 ## DockerHub
+
 - https://hub.docker.com/r/shur3d/mullvad
+
 ## Build
+
 See general description at https://github.com/SHU-red/Docker
+
 ## Disclaimer
+
 - Running mullvad VPN on Debian
 - Configure mullvad via CLI
 - Possibility to add IP-Range to make Web-UIs of child-containers reachable
 - inspired by: https://github.com/oblique/dockerfiles/tree/master/mullvad
+
 ## ToDo / Ideas
-[ ] Add mullvad-gui access through Web-UI
+
+- [ ] Add mullvad-gui access through Web-UI
+
 ## Docker-Compose - mullvad
+
 Port forwarding for child services
 ```
 ---
@@ -35,7 +45,9 @@ services:
 
 ...
 ```
+
 ## Docker-Compose - additional services
+
 Example for containers routet through mullvad
 No port forwarding in own service anymore
 ```
@@ -71,7 +83,9 @@ No port forwarding in own service anymore
       - /mnt/downloads:/output:rw
     restart: unless-stopped
 ```
+
 ## Installation / Configuration
+
 from inside mullvad container
 ```
 $ mullvad relay set tunnel-protocol wireguard
@@ -81,5 +95,7 @@ $ mullvad lan set allow
 $ mullvad account login [ID]
 $ mullvad connect
 ```
+
 ## Sources
+
 - https://github.com/oblique/dockerfiles/blob/master/mullvad/Dockerfile

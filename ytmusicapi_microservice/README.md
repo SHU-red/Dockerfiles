@@ -23,9 +23,9 @@ Please see the source repo
 https://github.com/fquirin/python-ytmusicapi-server
 
 ## ToDo's
-[x] Create dedicated folder for persistent settings/files
 
-[ ] Add arm-builds?
+- [x] Create dedicated folder for persistent settings/files
+- [ ] Add arm-builds?
 
 ## Docker-Compose
 Example:

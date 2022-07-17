@@ -43,11 +43,11 @@ Create a dummy account, create a channel and subscribe with as many target-accou
 
 ## ToDo
 
-[  ] Build container for ARM devices
+- [ ] Build container for ARM devices
 
-[x] Opportunity to serve multiple accounts with notifications (using channels proviced by a dummy-account)
+- [x] Opportunity to serve multiple accounts with notifications (using channels proviced by a dummy-account)
 
-[  ] Add more functionalities to execute filetype-depenent actions (e.g. Image = push file; Txt = push message; ...)
+- [ ] Add more functionalities to execute filetype-depenent actions (e.g. Image = push file; Txt = push message; ...)
 
 ## Docker-Compose
 ```

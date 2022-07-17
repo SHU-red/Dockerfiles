@@ -36,15 +36,15 @@ https://github.com/rahiel/telegram-send
 
 ## ToDo
 
-[  ] Build container for ARM devices
+- [ ] Build container for ARM devices
 
-[x] Serve multiple users via Group Chat
+- [x] Serve multiple users via Group Chat
 
-[x] Deactivate File Deletion if number of files is set to 0
+- [x] Deactivate File Deletion if number of files is set to 0
 
-[x] Add ability to differentiate between images and videos and send them (with the correct command for telegram-send)
+- [x] Add ability to differentiate between images and videos and send them (with the correct command for telegram-send)
 
-[ ] Think about additional filetype-dependent features like sending content if a txt file is placed in the folder
+- [ ] Think about additional filetype-dependent features like sending content if a txt file is placed in the folder
 
 ## Docker-Compose
 ```

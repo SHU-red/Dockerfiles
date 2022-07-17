@@ -17,8 +17,6 @@ See general description at https://github.com/SHU-red/Docker
 
 ## ToDo / Ideas
 
-[ ] -
-
 ## Docker-Compose
 Example how i use it to control fan speed based on CPU and HDD temperature
 ```
