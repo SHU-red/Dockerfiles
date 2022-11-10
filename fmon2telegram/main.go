@@ -2,17 +2,24 @@ package main
 
 // Imports
 import (
-    "os"
-    "fmt"
-    "time"
-    "io/ioutil"
-    "log"
-    "sort"
-    "math"
-    "os/exec"
-    "path/filepath"
-    "strconv"
+	"fmt"
+	"log"
+	"math"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"regexp"
+	"sort"
+	"strconv"
+	"time"
 )
+
+// Create Expanded FileInfo Struct
+type ExtFileInfo struct {
+    FileInfo os.FileInfo
+    AbsPath string
+}
+
 
 // Check if Environment Variable is set
 func isEnvExist(key string) bool {
@@ -79,10 +86,6 @@ func main() {
     n := -1
     n_old := -1
 
-    // List for ignoring directories
-    var p []os.FileInfo
-
-
     // Infinite Loop
     for {
 
@@ -96,24 +99,37 @@ func main() {
         // Loop Header
         fmt.Println("\n===== ", t)
 
-        // Get files
-        files, err := ioutil.ReadDir(dir)
-        if err != nil {
-            log.Fatal(err)
-        }
+        // Declare slices
+        var p []ExtFileInfo
+        var tmp ExtFileInfo
 
-        // Empty FileList
-        p = nil
+        // Declare RegEx for Filetypes
+        re_vid := regexp.MustCompile(".*\\.gif$|.*\\.mp4$|.*\\.mkv$|.*\\.avi$|.*\\.mpeg$")
+        re_img := regexp.MustCompile(".*\\.jpg$|.*\\.jpeg$|.*\\.png$")
 
-        // Pick only files and ignore directories
-        for _, file := range files {
+        // Scan folders animation 
+        err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+            
+            // Ignore Directories
+            if !info.IsDir() {
 
-            // If File
-            if !file.IsDir() {
+                // Check Type via RegEx
+                if re_vid.MatchString(path) || re_img.MatchString(path) {
 
-                // Append File to list
-                p = append(p, file)
+                    // Bundle information in ExtFileInfo struct
+                    tmp.FileInfo = info
+                    tmp.AbsPath = path
+
+                    // Append Information
+                    p = append(p, tmp)
+
+                }
+
             }
+            return nil
+        })
+        if err != nil {
+            panic(err)
         }
 
         // Number of files
@@ -121,7 +137,7 @@ func main() {
 
         // Sort FileList
         sort.Slice(p, func(i,j int) bool{
-            return p[i].ModTime().Unix() < p[j].ModTime().Unix()
+            return p[i].FileInfo.ModTime().Unix() < p[j].FileInfo.ModTime().Unix()
         })
 
         // If not in first run
@@ -140,19 +156,14 @@ func main() {
                 for x := n-int(d); x < n; x++ {
 
                     // Print Name
-                    fmt.Println(p[x].Name())
-
-                    // Get extension
-                    ext := filepath.Ext(dir + "/" + p[x].Name())
-
-                    // Create filepath string
-                    p_path := dir + "/" + p[x].Name()
+                    fmt.Println(p[x].FileInfo.Name())
+                    fmt.Println(p[x].AbsPath)
 
                     // Default command as image
                     command := "-i"
 
                     // File extension related part of command
-                    if ext == ".gif" || ext == ".mp4" || ext == ".mkv" || ext == ".avi" || ext == ".mpeg" {
+                    if re_vid.MatchString(p[x].AbsPath) {
 
                         // Command for videos and animations
                         command = "--animation"
@@ -160,7 +171,7 @@ func main() {
                     }
 
                     // Send via Telegram-send (installed via pip, thats why path to binary has to be used)
-                    command = "telegram-send " + command + " " + p_path + " --caption '<b>" + txt + ":</b>\n\nTimestamp: <i> " + t + "</i>\n" + p[x].Name() + "' --format html"
+                    command = "telegram-send " + command + " " + p[x].AbsPath + " --caption '<b>" + txt + ":</b>\n\nTimestamp: <i> " + t + "</i>\n" + p[x].FileInfo.Name() + "' --format html"
                     fmt.Println(command)
                     out, err := exec.Command(shell,"-c",command).Output()
                     if err != nil {
@@ -178,11 +189,11 @@ func main() {
                 for x := 0; x < n - k; x++ {
 
                     // Delete File
-                    err := os.Remove(dir + "/" + p[x].Name())
+                    err := os.Remove(p[x].AbsPath)
                     if err != nil {
-                        log.Fatal(err)
+                        fmt.Println("Could not delete file: ", p[x].FileInfo.Name())
                     } else {
-                        fmt.Println("Deleted file: ", p[x].Name())
+                        fmt.Println("Deleted file: ", p[x].FileInfo.Name())
                     }
 
                 }

@@ -6,17 +6,28 @@
 # https://github.com/oblique/dockerfiles/blob/master/mullvad/Dockerfile
 
 # Base image
-FROM debian:latest
+FROM archlinux:latest
 
 # Install packages, mullvad and clean up
-RUN apt-get -y update && \
-    apt-get -y install curl dbus iproute2 && \
-    dpkg --add-architecture amd64 && \
-    curl -L -o mullvad.deb https://mullvad.net/download/app/deb/latest && \
-    apt-get -y install ./mullvad.deb && \
-    rm -f mullvad.deb && \
-    apt-get -y clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN pacman -Syuv --debug --noconfirm
+RUN pacman -Syyu --noconfirm
+RUN pacman-db-upgrade
+RUN pacman -S dbus iproute2 git libnotify libappindicator-gtk3 nss base-devel --noconfirm
+
+# Create User and Workingdirectory
+RUN useradd -ms /bin/bash mulluser
+USER mulluser
+RUN mkdir -p /home/mulluser/downloads/tmp
+WORKDIR /home/mulluser/downloads/tmp
+
+# Get Mullvad from AUR
+RUN git clone https://aur.archlinux.org/mullvad-vpn.git
+WORKDIR /home/mulluser/downloads/tmp/mullvad-vpn
+RUN makepkg -is --noconfirm
+
+# Cleanup
+RUN rm -rf /home/mulluser/downloads/tmp
+RUN pacman -Rns git base-devel
 
 # Set Mullvad config directory
 ENV MULLVAD_SETTINGS_DIR "/config"
