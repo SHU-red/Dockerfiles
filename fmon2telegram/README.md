@@ -10,7 +10,7 @@ See general description at https://github.com/SHU-red/Docker
 
 ## Disclaimer
 
-- Surveilling a folder and its subfolder to push new images, GIFs or Videos (.mp4) via Telegram Bot
+- Surveilling a folder and its subfolders to push new images, GIFs or Videos (.mp4) via Telegram Bot
 - Delete oldest files if configured number of files is exceeded
 - The GO-Script is contained as built executable which keeps container size low and performance high
 
