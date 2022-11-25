@@ -10,7 +10,7 @@ See general description at https://github.com/SHU-red/Docker
 
 ## Disclaimer
 
-- Surveilling a folder to push new images, GIFs or Videos via Telegram Bot
+- Surveilling a folder and its subfolder to push new images, GIFs or Videos (.mp4) via Telegram Bot
 - Delete oldest files if configured number of files is exceeded
 - The GO-Script is contained as built executable which keeps container size low and performance high
 
@@ -30,8 +30,8 @@ https://github.com/rahiel/telegram-send
 
 ## Functions
 
-1. (GO) Folder-Monitoring, frequently checking all files in a folder
-2. (Python) Pushing new found files via `telegram-send` (installed from pip3)
+1. (GO) (Sub)Folder-Monitoring, frequently checking all files in a folder
+2. (Python) Pushing new found images/videos(.mp4) via `telegram-send` (installed from pip3)
 3. (GO) Deleting oldest files if configured number of files to keep is exceeded
 
 ## ToDo

@@ -76,7 +76,7 @@ func main() {
         fmt.Println("Environment Variable " + envvar + " used!")
         f, _ = strconv.Atoi(os.Getenv(envvar))
     }
-
+    
     // DECLARATIONS =================
 
     // Loop
@@ -104,7 +104,8 @@ func main() {
         var tmp ExtFileInfo
 
         // Declare RegEx for Filetypes
-        re_vid := regexp.MustCompile(".*\\.gif$|.*\\.mp4$|.*\\.mkv$|.*\\.avi$|.*\\.mpeg$")
+        re_vid := regexp.MustCompile(".*\\.mp4$")
+        re_anim := regexp.MustCompile(".*\\.gif$")
         re_img := regexp.MustCompile(".*\\.jpg$|.*\\.jpeg$|.*\\.png$")
 
         // Scan folders animation 
@@ -166,8 +167,12 @@ func main() {
                     if re_vid.MatchString(p[x].AbsPath) {
 
                         // Command for videos and animations
-                        command = "--animation"
+                        command = "--video"
 
+                    } else if re_anim.MatchString(p[x].AbsPath) {
+
+                        // Command for animations such as gif
+                        command = "--animation"
                     }
 
                     // Send via Telegram-send (installed via pip, thats why path to binary has to be used)
