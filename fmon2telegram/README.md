@@ -59,7 +59,7 @@ services:
       - /[YOURPATH]/fmon2telegram_files:/home/user/files # Surveilled Folder for new files to push
     environment:
       - SHELL=/bin/sh # /bin/sh necessary for alpine
-      - FMONTG_NUM=10 # Number of files to keep
+      - FMONTG_NUM=10 # Number of files to keep, 0 to never delete files
       - FMONTG_DIR=./files # Folder to monitor
       - FMONTG_FRQ=1000 # Folder-check-frequency in Milliseconds
       - FMONTG_TXT=Someone rang the doorbell # Text as caption for every sent image
