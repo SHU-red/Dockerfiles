@@ -13,4 +13,4 @@ if [ -n "${LOCAL_NETWORK}" ]; then
 fi
 
 ### Start mullvad daemon
-exec /opt/Mullvad\ VPN/resources/mullvad-daemon -v
+exec mullvad-daemon

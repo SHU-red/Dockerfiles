@@ -6,37 +6,33 @@
 # https://github.com/oblique/dockerfiles/blob/master/mullvad/Dockerfile
 
 # Base image
-FROM archlinux:latest
+FROM fedora:latest
 
 # Install packages, mullvad and clean up
-RUN pacman -Syuv --debug --noconfirm
-RUN pacman -Syyu --noconfirm
-RUN pacman-db-upgrade
-RUN pacman -S dbus iproute2 git libnotify libappindicator-gtk3 nss base-devel --noconfirm
+RUN dnf update -y
+RUN dnf upgrade -y
+RUN dnf install -y wget dbus iproute
+
+# Install mullvad
+RUN wget --content-disposition https://mullvad.net/download/app/rpm/latest
+RUN dnf install -y ./Mullvad*.rpm
+RUN rm ./Mullvad*.rpm
+
+# Create direcotries
+RUN mkdir -p /home/mulluser/mull_config
+RUN mkdir -p /home/mulluser/script
+
+# Copy Start Script and make executable
+COPY ./startscript.sh /home/mulluser/script/
+CMD /bin/bash -c "chmod +x /home/mulluser/script/startscript.sh"
 
 # Create User and Workingdirectory
 RUN useradd -ms /bin/bash mulluser
-USER mulluser
-RUN mkdir -p /home/mulluser/downloads/tmp
-WORKDIR /home/mulluser/downloads/tmp
-
-# Get Mullvad from AUR
-RUN git clone https://aur.archlinux.org/mullvad-vpn.git
-WORKDIR /home/mulluser/downloads/tmp/mullvad-vpn
-RUN makepkg -is --noconfirm
-
-# Cleanup
-RUN rm -rf /home/mulluser/downloads/tmp
-RUN pacman -Rns git base-devel
+#RUN echo "ALL ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+#USER mulluser
 
 # Set Mullvad config directory
-ENV MULLVAD_SETTINGS_DIR "/config"
-
-# Create config directory
-RUN mkdir -p /config
-
-# Copy start script
-COPY ./startscript.sh /script/
+ENV MULLVAD_SETTINGS_DIR "/home/mulluser/mull_config"
 
 # Make start script executable and start
-CMD /bin/bash -c "chmod +x /script/startscript.sh && /script/startscript.sh"
+CMD /bin/bash -c "/home/mulluser/script/startscript.sh"

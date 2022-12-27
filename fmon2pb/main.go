@@ -161,7 +161,7 @@ func main() {
             }
 
             // If exceeded number of files to keep
-            if n > k {
+            if n > k && k > 0 {
 
                 // Loop over files which are too much
                 for x := 0; x < n - k; x++ {
