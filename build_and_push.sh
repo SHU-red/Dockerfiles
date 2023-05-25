@@ -2,6 +2,14 @@
 # Build and push Dockerfile from current directory PWD
 
 # Title
+echo -e "=============== Re-Installing BuildX ======================\n"
+
+# Re Install BuildX
+mkdir -vp ~/.docker/cli-plugins/
+curl --silent -L "https://github.com/docker/buildx/releases/download/v0.3.0/buildx-v0.3.0.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+chmod a+x ~/.docker/cli-plugins/docker-buildx
+
+# Title
 echo -e "=============== Create new Dockerfile ======================\n"
 
 # Docker Credentials taken from parent script (executing this script)
@@ -10,11 +18,6 @@ echo -e "=============== Create new Dockerfile ======================\n"
 export DOCKER_CLI_EXPERIMENTAL=enabled
 export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
-
-# Re Install BuildX
-mkdir -vp ~/.docker/cli-plugins/
-curl --silent -L "https://github.com/docker/buildx/releases/download/v0.3.0/buildx-v0.3.0.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
-chmod a+x ~/.docker/cli-plugins/docker-buildx
 
 # Inform about current buildx
 echo -e "Currently active builder with supported platforms:\n"
