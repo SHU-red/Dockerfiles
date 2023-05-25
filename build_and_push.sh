@@ -11,6 +11,11 @@ export DOCKER_CLI_EXPERIMENTAL=enabled
 export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 
+# Re Install BuildX
+mkdir -vp ~/.docker/cli-plugins/
+curl --silent -L "https://github.com/docker/buildx/releases/download/v0.3.0/buildx-v0.3.0.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+chmod a+x ~/.docker/cli-plugins/docker-buildx
+
 # Inform about current buildx
 echo -e "Currently active builder with supported platforms:\n"
 
@@ -27,6 +32,9 @@ echo -e "Dockerfile found\n"
 
 # Get name of current directory
 nam=${PWD##*/}
+
+# Convert to only lowercase String
+nam=${nam,,}
 
 # Get additional Tags
 echo -e "What additional tags shall be applied?\n(Comma-separated list)\n"
