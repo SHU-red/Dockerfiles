@@ -1,4 +1,4 @@
- # urlwatch_playwright - urlwatch including playwright for browsser jobs
+ # urlwatch_playwright - urlwatch including playwright+chromium for browser jobs
 
 ## DockerHub
 
