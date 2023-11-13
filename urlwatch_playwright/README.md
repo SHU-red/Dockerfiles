@@ -6,7 +6,7 @@
 
 ## Build
 
-See general description at https://github.com/SHU-red/Docker
+See general description at https://github.com/SHU-red/Dockerfiles
 
 ## Disclaimer
 
