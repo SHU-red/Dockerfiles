@@ -63,6 +63,7 @@ services:
       - FMONTG_DIR=./files # Folder to monitor
       - FMONTG_FRQ=1000 # Folder-check-frequency in Milliseconds
       - FMONTG_TXT=Someone rang the doorbell # Text as caption for every sent image
+      - FMONTG_TYP=jpg,jpeg,gif,png,mp4 # Comma separated list of file extensions to use
     restart: unless-stopped
 ```
 
