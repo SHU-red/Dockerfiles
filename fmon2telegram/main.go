@@ -173,16 +173,19 @@ func main() {
 					fmt.Println(p[x].FileInfo.Name())
 					fmt.Println(p[x].AbsPath)
 
+					// Get fileextension
+					ext := re.FindString(p[x].FileInfo.Name())
+
 					// Default command as image
 					command := "-i"
 
 					// File extension related part of command
-					if slices.Contains(ys, "mp4") || slices.Contains(ys, "mkv") {
+					if slices.Contains([]string{"mp4", "mkv"}, ext) {
 
 						// Command for videos and animations
 						command = "--video"
 
-					} else if slices.Contains(ys, "gif") {
+					} else if slices.Contains([]string{"gif"}, ext) {
 
 						// Command for animations such as gif
 						command = "--animation"
